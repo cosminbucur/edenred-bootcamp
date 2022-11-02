@@ -1,0 +1,45 @@
+@startuml
+
+class Client {}
+
+interface HouseBuilder {
++buildFoundation:void
++buildStructure:void
++buildRoof:void
++getHouse(): House
+}
+
+class BrickHouseBuilder {
+-house:House
++buildFoundation:void
++buildStructure:void
++buildRoof:void
++getHouse(): House
+}
+note left: concrete builder
+
+class StrawHouseBuilder {
+-house:House
++buildFoundation:void
++buildStructure:void
++buildRoof:void
++getHouse(): House
+}
+
+class House {
+}
+note left: product
+
+class Pig {
+-houseBuilder:HouseBuilder
+Pig(houseBuilder:HouseBuilder)
++build():House
+}
+note left: director
+
+HouseBuilder <|-- BrickHouseBuilder
+HouseBuilder <|-- StrawHouseBuilder
+BrickHouseBuilder --> House:creates
+Pig *--> HouseBuilder
+Client --> Pig: uses
+@enduml

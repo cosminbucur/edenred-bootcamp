@@ -1,0 +1,32 @@
+@startuml
+
+
+class Parent {
++method()
+}
+note left: before
+
+class Child1 {
+}
+
+class Child2 {
+}
+
+class Parent2 {
+}
+note left: after
+
+class Child3 {
+}
+
+class Child4 {
++method()
+}
+
+Parent <|-- Child1
+Parent <|-- Child2
+
+Parent2 <|-- Child3
+Parent2 <|-- Child4
+
+@enduml

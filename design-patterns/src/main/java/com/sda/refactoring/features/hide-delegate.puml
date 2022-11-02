@@ -1,0 +1,32 @@
+@startuml
+
+class Client {
+}
+note left: before
+
+class Person {
++getDepartment()
+}
+
+class Department {
++getManager()
+}
+
+class Client2 {
+}
+note right: after
+
+class Person2 {
++getManager()
+}
+
+class Department2 {
+}
+
+Client --> Person
+Client --> Department
+
+Client2 --> Person2
+Person2 --> Department2
+
+@enduml

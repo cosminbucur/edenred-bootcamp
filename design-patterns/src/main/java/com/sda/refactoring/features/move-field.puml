@@ -1,0 +1,22 @@
+@startuml
+
+class Class1 {
++field
+}
+note left: before
+
+class Class2 {
+}
+
+class Class3 {
+}
+note right: after
+
+class Class4 {
++field
+}
+
+Class1 .. Class2
+Class3 .. Class4
+
+@enduml

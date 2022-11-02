@@ -1,0 +1,17 @@
+@startuml
+
+
+class Parent {
+}
+note left: before
+
+interface Role {
+}
+note left: after
+
+class Implementation {
+}
+
+Role <|-- Implementation
+
+@enduml
