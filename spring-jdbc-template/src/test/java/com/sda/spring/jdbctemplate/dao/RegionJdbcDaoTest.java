@@ -1,7 +1,6 @@
 package com.sda.spring.jdbctemplate.dao;
 
 import com.sda.spring.jdbctemplate.model.Region;
-import com.sda.spring.jdbctemplate.model.Region;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ class RegionJdbcDaoTest {
         Region region = new Region();
         region.setRegionName("Region");
 
-        dao.smartSave(region);
+        dao.advancedSave(region);
 
         assertThat(dao.count()).isEqualTo(1);
     }
@@ -110,5 +109,25 @@ class RegionJdbcDaoTest {
 
         int count = dao.count();
         assertThat(count).isEqualTo(0);
+    }
+
+    @Test
+    void batchUpdate() {
+        Region region1 = new Region();
+        region1.setRegionId(1L);
+        region1.setRegionName("Region1");
+
+        Region region2 = new Region();
+        region2.setRegionId(5L);
+        region2.setRegionName("Region2");
+
+        List<Region> regions = List.of(region1, region2);
+
+        int[] actual = dao.batchUpdate(regions);
+
+        List<Region> regionsAfter = dao.findAll();
+        assertThat(actual).hasSize(2);
+        assertThat(actual[0]).isEqualTo(1);
+        assertThat(actual[1]).isEqualTo(1);
     }
 }

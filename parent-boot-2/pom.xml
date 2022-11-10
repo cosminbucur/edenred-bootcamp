@@ -15,7 +15,6 @@
 
     <properties>
         <spring-boot.version>2.4.2</spring-boot.version>
-        <spring-boot.version>2.3.4.RELEASE</spring-boot.version>
         <bootstrap.version>5.1.0</bootstrap.version>
         <webjars-locator.version>0.42</webjars-locator.version>
         <font-awesome.version>5.15.4</font-awesome.version>
@@ -57,16 +56,14 @@
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <!-- Package as an executable jar/war -->
-                <plugin>
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>${spring-boot.version}</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+        <plugins>
+            <!-- Package as an executable jar/war -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
+            </plugin>
+        </plugins>
     </build>
 
 </project>
