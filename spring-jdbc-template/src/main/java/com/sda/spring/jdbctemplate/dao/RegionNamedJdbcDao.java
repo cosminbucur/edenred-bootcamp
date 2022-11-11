@@ -10,10 +10,7 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Slf4j
 @AllArgsConstructor
@@ -21,13 +18,6 @@ import java.util.Optional;
 public class RegionNamedJdbcDao {
 
     private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-    // private row mapper
-    private final RowMapper<Region> rowMapper = (resultSet, rowNum) -> {
-        Region region = new Region();
-        region.setRegionId(resultSet.getLong("region_id"));
-        region.setRegionName(resultSet.getString("region_name"));
-        return region;
-    };
 
     public void save(Region region) {
         String sql = "INSERT INTO regions (" +
@@ -55,19 +45,13 @@ public class RegionNamedJdbcDao {
         return Optional.ofNullable(region);
     }
 
-    public Optional<Region> findByName(String regionName) {
-        String sql = "SELECT * FROM regions WHERE region_name LIKE :regionName";
-        Region region = null;
-        try {
-            // parameter source as map with single entry
-            MapSqlParameterSource namedParameters = new MapSqlParameterSource();
-            namedParameters.addValue("regionName", regionName);
-            region = namedParameterJdbcTemplate.queryForObject(sql, namedParameters, rowMapper);
-        } catch (DataAccessException exception) {
-            log.info("Region not found: " + regionName);
-        }
-        return Optional.ofNullable(region);
-    }
+    // private row mapper
+    private final RowMapper<Region> rowMapper = (resultSet, rowNum) -> {
+        Region region = new Region();
+        region.setRegionId(resultSet.getLong("region_id"));
+        region.setRegionName(resultSet.getString("region_name"));
+        return region;
+    };
 
     public void update(Region region, Long id) {
         String sql = "UPDATE regions SET " +
@@ -84,5 +68,19 @@ public class RegionNamedJdbcDao {
         if (rowsAffected == 1) {
             log.info("Region updated: " + region.getRegionName());
         }
+    }
+
+    public Optional<Region> findByName(String regionName) {
+        String sql = "SELECT * FROM regions WHERE region_name LIKE :regionName";
+        Region region = null;
+        try {
+            // parameter source as map with single entry
+            MapSqlParameterSource namedParameters = new MapSqlParameterSource();
+            namedParameters.addValue("regionName", "%" + regionName + "%");
+            region = namedParameterJdbcTemplate.queryForObject(sql, namedParameters, rowMapper);
+        } catch (DataAccessException exception) {
+            log.info("Region not found: " + regionName);
+        }
+        return Optional.ofNullable(region);
     }
 }
