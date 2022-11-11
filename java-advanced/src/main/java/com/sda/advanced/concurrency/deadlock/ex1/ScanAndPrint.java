@@ -13,6 +13,7 @@ public class ScanAndPrint implements Runnable {
     @Override
     public void run() {
         // do scanning and printing simultaneously
+        // TODO: sync printer
         synchronized (scanner) {
             System.out.println("Thread " + Thread.currentThread().getName() + " acquired scanner");
             try {
@@ -26,6 +27,7 @@ public class ScanAndPrint implements Runnable {
 
             // print the documents already scanned
             System.out.println("Thread " + Thread.currentThread().getName() + " is waiting for printer");
+            // TODO: sync scanner
             synchronized (printer) {
                 printer.print();
                 System.out.println("Thread " + Thread.currentThread().getName() + " is printing");

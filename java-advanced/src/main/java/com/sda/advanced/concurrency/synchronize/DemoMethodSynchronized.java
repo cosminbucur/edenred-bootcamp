@@ -1,6 +1,5 @@
 package com.sda.advanced.concurrency.synchronize;
 
-// https://howtodoinjava.com/java/multi-threading/wait-notify-and-notifyall-methods/
 public class DemoMethodSynchronized {
 
     public static void main(String[] args) {

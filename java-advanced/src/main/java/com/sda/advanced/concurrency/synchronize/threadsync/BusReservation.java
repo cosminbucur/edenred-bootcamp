@@ -17,8 +17,9 @@ public class BusReservation implements Runnable {
         }
     }
 
-    public synchronized boolean bookTickets(int seats) {
-//    public boolean bookTickets(int seats) {
+    // TODO: synchronize tickets
+//    public synchronized boolean bookTickets(int seats) {
+    public boolean bookTickets(int seats) {
         System.out.println("Welcome " + Thread.currentThread().getName() + "! There are " + this.getAvailableSeats() + " available seats.");
 
         if (seats > this.getAvailableSeats()) {

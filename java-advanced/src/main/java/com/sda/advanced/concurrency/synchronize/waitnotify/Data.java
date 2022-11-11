@@ -11,6 +11,7 @@ public class Data {
     public synchronized void send(String packet) {
         while (!transfer) {
             try {
+                // suspend a thread
                 wait();
             } catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
@@ -20,6 +21,8 @@ public class Data {
         transfer = false;
 
         this.packet = packet;
+
+        // wake up threads
         notifyAll();
     }
 

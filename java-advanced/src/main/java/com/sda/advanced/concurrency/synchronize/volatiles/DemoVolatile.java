@@ -1,8 +1,14 @@
-package com.sda.advanced.concurrency.synchronize;
+package com.sda.advanced.concurrency.synchronize.volatiles;
 
 public class DemoVolatile {
 
-    private static volatile boolean sayHello = false;
+    // used to make classes thread safe (synchronize)
+    // used to modify the value by different threads
+    // read / write will be done from and to the main memory
+//    private static volatile boolean sayHello = false;
+
+    // changes made in one thread might not reflect immediately in other thread
+    private static boolean sayHello = false;
 
     public static void main(String[] args) throws InterruptedException {
 
@@ -20,10 +26,12 @@ public class DemoVolatile {
 
         thread.start();
 
+        // main thread changes value
         Thread.sleep(1000);
         System.out.println("Say Hello..");
         sayHello = true;
 
+        // main thread changes value
         Thread.sleep(1000);
         System.out.println("Say Bye..");
         sayHello = false;

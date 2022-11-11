@@ -10,8 +10,9 @@ public class JoinThreads implements Runnable {
             try {
                 System.out.println(System.nanoTime() + " Inside join condition");
                 DemoJoin.t2.start();
-                DemoJoin.t2.join();     // stop t1 until t2 is finished
-            } catch (InterruptedException e) {
+                // TODO: enable this
+//                DemoJoin.t2.join();     // stop t1 until t2 is finished
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
