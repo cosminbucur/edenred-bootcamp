@@ -1,13 +1,6 @@
 # server port
 server.port: 8081
 
-logging:
-  # default logging goes to console
-  level:
-    root: INFO
-    org.springframework: ERROR
-    com.sda.spring.boot: DEBUG
-
 spring:
   datasource:
     driver-class-name: org.h2.Driver
@@ -26,11 +19,3 @@ spring:
         format_sql: false
   # access console http://localhost:8081/h2-console
   h2.console.enabled: true # the JDBC URL is jdbc:h2:mem:testdb
-
-# spring boot actuator configuration
-
-# enable all endpoints
-management.endpoints.web.exposure.include: "*"
-
-# disable endpoints
-#management.endpoints.web.exposure.exclude: health,info,env,beans

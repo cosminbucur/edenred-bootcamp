@@ -5,6 +5,7 @@ spring:
     username: sa
     password:
   jpa:
+    # https://docs.jboss.org/hibernate/orm/5.0/userguide/html_single/Hibernate_User_Guide.html#configurations
     hibernate:
       ddl-auto: create-drop
       naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl

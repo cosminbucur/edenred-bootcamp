@@ -4,11 +4,11 @@ import java.util.Random;
 import java.util.concurrent.Callable;
 
 // callable is a runnable on steroids
-public class RandomGeneratorTask implements Callable {
+public class RandomGeneratorTask implements Callable<Integer> {
 
     // you can throw exception (unlike runnable run())
     @Override
-    public Object call() throws Exception {
+    public Integer call() throws Exception {
         // perform some computation
         Random generator = new Random();
         Integer randomNumber = generator.nextInt(5);

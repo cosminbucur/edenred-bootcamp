@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 import java.util.Collection;
 import java.util.List;
 
-public interface ProfileRepository extends JpaRepository<Profile, Integer> {
+public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
     // find by
 

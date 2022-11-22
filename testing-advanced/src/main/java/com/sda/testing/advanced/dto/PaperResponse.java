@@ -60,7 +60,7 @@ public class PaperResponse {
 
     @Override
     public String toString() {
-        return "Paper{" +
+        return "PaperResponse{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
                 ", author='" + author + '\'' +
