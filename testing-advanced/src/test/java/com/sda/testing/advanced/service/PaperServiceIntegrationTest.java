@@ -1,15 +1,16 @@
 package com.sda.testing.advanced.service;
 
-import com.sda.testing.advanced.dto.PaperRequest;
-import com.sda.testing.advanced.dto.PaperResponse;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import com.sda.testing.advanced.dto.PaperRequest;
+import com.sda.testing.advanced.dto.PaperResponse;
 
 @SpringBootTest
 class PaperServiceIntegrationTest {
